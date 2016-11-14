@@ -7,7 +7,7 @@ var treemap = d3.layout.treemap()
     .value(function(d) { return d.size; });
 
 //var colorScaleType='Greens';
-var colorScaleType='YlGn';
+var colorScaleType='RdYlGn';
 var colorScale = d3.scale.quantize()
         .domain([0, 100])
         .range(colorbrewer[colorScaleType][9]);
@@ -24,14 +24,16 @@ d3.json("treemap.asnsize.json", function(json) {
       .enter().append("div")
       .attr("class", "cell")
       .style("background", function(d) { return d.children ? null : colorScale(d.pct) })
+      .attr("title", txt_from_data(d) )
       .call(cell)
       // .text(function(d) { return d.children ? null : d.parent.name; })
-      .text(function(d) { return d.name } ) // children ? null : d.parent.name; })
-      .append("title").text( function(d) { return txtLabel(d) } );
+      .text(function(d) { return d.name } ); // children ? null : d.parent.name; })
 
-function txtLabel(d) {
+function txt_from_data(d) {
    var txt = '';
-   txt += 'pct: ' + d.pct ;
+   txt += 'AS' + d.name + '\n' ;
+   txt += 'pfx count: ' + d.size + '\n';
+   txt += 'deagg: ' + d.pct + '%';
    return txt;
 }
 /*
