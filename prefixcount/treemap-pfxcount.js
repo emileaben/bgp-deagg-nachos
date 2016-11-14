@@ -17,7 +17,7 @@ var div = d3.select("#chart").append("div")
     .style("width", w + "px")
     .style("height", h + "px");
 
-d3.json("treemap.content.pfxcount.json", function(json) {
+d3.json("treemap.pfxcount.json", function(json) {
   var divs = div.data([json]).selectAll("rect")
       .data(treemap.nodes)
       .enter().append("rect")

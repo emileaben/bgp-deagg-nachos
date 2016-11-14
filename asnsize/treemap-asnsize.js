@@ -18,7 +18,7 @@ var div = d3.select("#chart").append("div")
     .style("height", h + "px");
 
 //d3.json("treemap.access.json", function(json) {
-d3.json("treemap.content.json", function(json) {
+d3.json("treemap.asnsize.json", function(json) {
   div.data([json]).selectAll("div")
       .data(treemap.nodes)
       .enter().append("div")
