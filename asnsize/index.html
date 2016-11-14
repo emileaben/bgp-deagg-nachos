@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Treemap</title>
+    <script type="text/javascript" src="d3.v2.min.js"></script>
+    <script type="text/javascript" src="colorbrewer.js"></script>
+    <link type="text/css" rel="stylesheet" href="treemap.css"/>
+  </head>
+  <body>
+    <h1>ASNsize</h1>
+    Each rectangle represents an ASN (number is in the rectangle)
+    Size of the rectangle is proportional to the total address space the ASN announces (IPv4)
+    Color of the rectangle is proportional to the percentage of deaggregated prefixes relative to the total this ASN originates (light yellow = low, dark green = high)
+    <div id="chart"></div>
+    <script type="text/javascript" src="treemap-asnsize.js"></script>
+  </body>
+</html>

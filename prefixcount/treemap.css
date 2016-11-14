@@ -1,0 +1,9 @@
+.cell {
+  border: solid 0.5px rgb(255, 255, 255);
+  border: solid 0.5px rgba(100, 100, 100, .3);
+  font: 8px sans-serif;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
