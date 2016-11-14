@@ -9,7 +9,7 @@ var treemap = d3.layout.treemap()
 //var colorScaleType='Greens';
 var colorScaleType='RdYlGn';
 var colorScale = d3.scale.quantize()
-        .domain([0, 100])
+        .domain([100, 0])
         .range(colorbrewer[colorScaleType][9]);
 
 var div = d3.select("#chart").append("div")
