@@ -24,7 +24,7 @@ d3.json("treemap.asnsize.json", function(json) {
       .enter().append("div")
       .attr("class", "cell")
       .style("background", function(d) { return d.children ? null : colorScale(d.pct) })
-      .attr("title", txt_from_data(d) )
+      .attr("title", txt_from_data )
       .call(cell)
       // .text(function(d) { return d.children ? null : d.parent.name; })
       .text(function(d) { return d.name } ); // children ? null : d.parent.name; })
