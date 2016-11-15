@@ -27,8 +27,7 @@ with open( sys.argv[1] ) as inf:
          d['children'].append(
             {
                'name': asn,
-               #'size': size,
-               'size': pfx_count,
+               'size': size,
                'pct': te_pct
             }
          )
