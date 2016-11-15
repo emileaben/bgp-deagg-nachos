@@ -16,6 +16,7 @@ with open( sys.argv[1] ) as inf:
          pfx_count = int( pfx_count )
          te_count = int( te_count ) 
          te_pct = 100.0 * te_count / pfx_count
+         asnsize = int(asnsize)
          size = None
          if sys.argv[2] == 'asnsize':
             size = int(asnsize)
@@ -28,6 +29,8 @@ with open( sys.argv[1] ) as inf:
             {
                'name': asn,
                'size': size,
+               'pc': pfx_count,
+               'as': asnsize,
                'pct': te_pct
             }
          )

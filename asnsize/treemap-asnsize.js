@@ -32,7 +32,8 @@ d3.json("treemap.asnsize.json", function(json) {
 function txt_from_data(d) {
    var txt = '';
    txt += 'AS' + d.name + '\n' ;
-   txt += 'pfx count: ' + d.size + '\n';
+   txt += 'pfx count: ' + d.pc + '\n';
+   txt += 'AS size (IPv4 addresses): ' + d.as + '\n';
    txt += 'deagg: ' + d.pct + '%';
    return txt;
 }
