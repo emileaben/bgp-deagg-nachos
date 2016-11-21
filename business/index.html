@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Treemap</title>
+    <script type="text/javascript" src="d3.v2.min.js"></script>
+    <script type="text/javascript" src="colorbrewer.js"></script>
+    <link type="text/css" rel="stylesheet" href="treemap.css"/>
+  </head>
+  <body>
+    <h1>Business</h1>
+    Each rectangle represents a business type 
+    Size of the rectangle is proportional to the total number of prefixes by ASN assigned to that business type
+    Color of the rectangle is proportional to the percentage of deaggregated prefixes relative to the total this business type originates (green = low, via yellow to, red = high)
+    Hover will show a tooltip with business type, number of IPv4 addresses and deagg percentage
+    <div id="chart"></div>
+    <script type="text/javascript" src="treemap-business.js"></script>
+  </body>
+</html>
