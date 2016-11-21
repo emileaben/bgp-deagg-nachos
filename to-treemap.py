@@ -16,7 +16,7 @@ if sys.argv[2] == 'country':
     with open( "as2cc.txt", "r" ) as ccFile:
         for line in ccFile:
             w = line.split("\t")
-            as2cat[w[0]] = w[1]
+            as2cat[w[0]] = (w[1], w[2])
 
 # AS to business type mapping:
 if sys.argv[2] == 'business':
@@ -63,7 +63,7 @@ with open( sys.argv[1] ) as inf:
             if asn in as2cat:
                 cc = as2cat[asn]
             else:
-                cc = "n/a"
+                cc = ("n/a", "n/a")
             cat_count[cc]["pfx_count"] += pfx_count
             cat_count[cc]["te_count"] += te_count
             cat_count[cc]["asnsize"] += asnsize
@@ -75,17 +75,38 @@ with open( sys.argv[1] ) as inf:
          print >>sys.stderr, e
 
 
+if sys.argv[2] == "country":
+    rirIndex = {}
+    # Compute percentage for countries:
+    for k, v in cat_count.iteritems():
+        cc = k[0]
+        rir = k[1]
 
-# Compute percentage for countries:
-for k, v in cat_count.iteritems():
-    d["children"].append(
-        {
-        "name": k,
-        "size": v["pfx_count"],
-        "pc": v["pfx_count"],
-        "as": v["asnsize"],
-        "pct": 100.0*v["te_count"]/v["pfx_count"]
-        }
-    )
+        if not rir in rirIndex:
+            rirIndex[rir] = len(d["children"])
+            d["children"].append({"name": rir, "children":[]})
+
+        d["children"][rirIndex[rir]]["children"].append(
+            {
+            "name": cc,
+            "size": v["pfx_count"],
+            "pc": v["pfx_count"],
+            "as": v["asnsize"],
+            "pct": 100.0*v["te_count"]/v["pfx_count"]
+            }
+        )
+
+elif sys.argv[2] == "business":
+    # Compute percentage for business types:
+    for k, v in cat_count.iteritems():
+        d["children"].append(
+            {
+            "name": k,
+            "size": v["pfx_count"],
+            "pc": v["pfx_count"],
+            "as": v["asnsize"],
+            "pct": 100.0*v["te_count"]/v["pfx_count"]
+            }
+        )
 
 print json.dumps( d, indent=2 )
